@@ -4,27 +4,17 @@ def findMin(nums: list[int]) -> int:
 
     while left <= right:
         mid = (left + right) // 2
-        
-        print(f"left: {left} mid:{mid} right:{right}")
-        print(f"left: {nums[left]} mid:{nums[mid]} right:{nums[right]}")
-        
-        if nums[mid] <= nums[left]:
-            right = mid - 1
-            print(f"Right updated = {right}")
-        
-        elif nums[mid] > nums[right]:
+        if nums[mid] > nums[right]:
             left = mid + 1
-            print(f"Left updated = {right}")
         
-        else:
-            return nums[left]
+        elif nums[mid] <= nums[right]:
+            right = mid
         
-        print(f"left: {left} mid:{mid} right:{right}")
-        print(f"left: {nums[left]} mid:{nums[mid]} right:{nums[right]}\n---------------")
+        if mid == left == right:
+            return nums[mid]
     
-    return nums[mid]
 
-
-nums = [2,1]
-# nums=[1,2,3,4]
+# nums = [2,1]
+nums=[1,2,3,4]
+# nums = [4, 5, 6, 7, 0, 1, 2]
 print(findMin(nums))
