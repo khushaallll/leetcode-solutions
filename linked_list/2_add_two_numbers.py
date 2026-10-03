@@ -13,6 +13,7 @@ def addTwoNumbers(l1: ListNode | None, l2: ListNode | None) -> ListNode | None:
         
         addition = num1 + num2 + carry
         if addition < 10:
+            carry = 0
             current.next = ListNode(addition)
         else:
             carry = 1
@@ -22,8 +23,9 @@ def addTwoNumbers(l1: ListNode | None, l2: ListNode | None) -> ListNode | None:
         current = current.next
         l1 = l1.next if l1 else None
         l2 = l2.next if l2 else None
-
-    current.next = ListNode(carry)
+    
+    if carry == 1:
+        current.next = ListNode(carry)
     return dummy.next
 
 l1 = [9,9,9,9,9,9,9]
